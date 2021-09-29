@@ -8,8 +8,9 @@ time = 100
 # Turtle setup
 t.screensize(200, 200)
 t.colormode(255)
+
 tim = t.Turtle()
-tim.pensize(5)
+tim.pensize(1)
 tim.speed("fastest")
 tim.shape("turtle")
 tim.color("green", "brown")
@@ -23,11 +24,12 @@ def random_color():
     return color
 
 
-def walker():
-    tim.forward(30)
-    tim.seth(random.choice(direction))
-    tim.pencolor(random_color())
+def draw_circle(size_of_gap):
+    for _ in range(int(360 / size_of_gap)):
+        tim.color(random_color())
+        tim.circle(100)
+        tim.seth(tim.heading() + size_of_gap)
 
 
-for _ in range(time):
-    walker()
+draw_circle(10)
+t.exitonclick()
